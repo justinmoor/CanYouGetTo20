@@ -1,0 +1,26 @@
+{
+com.badlogic.gdx.graphics.g2d.BitmapFont: {
+	hs: {
+		file: hs.fnt
+	}
+}
+com.badlogic.gdx.graphics.Color: {
+	RGBA_0_0_0_255: {
+		r: 0
+		g: 0
+		b: 0
+		a: 1
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
+	default: {
+		font: hs
+		fontColor: RGBA_0_0_0_255
+	}
+}
+com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle: {
+	default: {
+		label: default
+	}
+}
+}

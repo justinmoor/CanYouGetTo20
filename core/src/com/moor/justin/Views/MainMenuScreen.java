@@ -91,6 +91,7 @@ public class MainMenuScreen implements Screen {
             public void clicked(InputEvent event, float x, float y){
                 buttonClick.play(0.5f);
                 game.setScreen(new HighScoreScreen(game));
+
             }
         });
 

@@ -1,10 +1,10 @@
 package com.moor.justin;
 
 import com.badlogic.gdx.Game;
-
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.moor.justin.AndroidSpecific.ActionResolver;
 import com.moor.justin.Views.MainMenuScreen;
 import com.moor.justin.Views.myGameScreen;
 
@@ -16,6 +16,11 @@ public class MainGame extends Game {
     public SpriteBatch batch; // Tekent grafische elementen op het scherm a.d.h.v afbeeldingen.
     public BitmapFont font; // Letter font.
     public myGameScreen spelScherm; //Spelscherm
+    public ActionResolver actionResolver; // Voor android klassen
+
+    public MainGame(ActionResolver actionResolver){
+        this.actionResolver = actionResolver;
+    }
 
     //In de create methode wordt alles geinitialiseerd. Vergelijkbaar met onCreate binnen de android libary.
     public void create(){

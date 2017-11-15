@@ -1,8 +1,8 @@
 package com.moor.justin.Models;
 
 public class Score {
-    String naam;
-    int score;
+    private String naam;
+    private int score;
 
     public String getNaam() {
         return naam;

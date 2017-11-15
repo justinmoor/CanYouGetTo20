@@ -18,8 +18,8 @@ import java.util.Map;
 // Deze zijn het opsturen van je persoonlijke score, en het ophalen van de highscore.
 public class Database {
 
-    private String urlSubmit = "http://jmoor.ddns.net/insert.php";
-    private String urlShow = "http://jmoor.ddns.net/showscore.php";
+    private final String URLSUBMI = "http://jmoor.com/insert.php";
+    private final String URLSHOW = "http://jmoor.com/showScore.php";
     private boolean done;
 
     // Deze methode stuurt je score op. Parameters met de behaalde score en je naam.
@@ -36,7 +36,7 @@ public class Database {
         //Nieuw http request aanmaken. Je scores worden opgestuurd, dus een POST method wordt gebruikt.
         // Het PHP script erkent alleen POST methods.
         HttpRequestBuilder requestBuilder = new HttpRequestBuilder();
-        Net.HttpRequest httpRequest = requestBuilder.newRequest().method(Net.HttpMethods.POST).url(urlSubmit).build();
+        Net.HttpRequest httpRequest = requestBuilder.newRequest().method(Net.HttpMethods.POST).url(URLSUBMI).build();
         httpRequest.setContent(HttpParametersUtils.convertHttpParameters(parameters));
 
         // Request wordt opgestuurd. Als alles goed gaat returnt deze methode true, zo niet dan false.
@@ -54,6 +54,7 @@ public class Database {
 
             @Override
             public void failed(Throwable t) {
+                t.printStackTrace();
                 done = false;
             }
 
@@ -80,7 +81,7 @@ public class Database {
     public void getScores(){
         // Nieuw http request met een GET method.
         HttpRequestBuilder requestBuilder = new HttpRequestBuilder();
-        final Net.HttpRequest httpRequest = requestBuilder.newRequest().method(Net.HttpMethods.GET).url(urlShow).build();
+        final Net.HttpRequest httpRequest = requestBuilder.newRequest().method(Net.HttpMethods.GET).url(URLSHOW).build();
         httpRequest.setHeader("Content-Type", "application/json");
 
         scores = new ArrayList<Score>();
@@ -101,11 +102,14 @@ public class Database {
                     score.setScore(scoreJ.getInt("score"));
                     scores.add(score);
                 }
+
+
             }
 
             // Gaat er iets fout? Scores is null en er wordt een foutmelding op het highscore scherm weergeven.
             @Override
             public void failed(Throwable t) {
+                t.printStackTrace();
                 scores = null;
             }
 

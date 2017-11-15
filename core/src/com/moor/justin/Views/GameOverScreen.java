@@ -182,14 +182,17 @@ public class GameOverScreen implements Screen {
                 submitScore.setTouchable(Touchable.disabled);
             } else {
                 message.setX(Gdx.graphics.getWidth() / 2 - 455);
-                message.setText("            Something went wrong... \nPlease check your internet connection.");
+                game.actionResolver.showToast("Something went wrong, please check your internet connection.");
+            //    message.setText("            Something went wrong... \nPlease check your internet connection.");
             }
         } else if (naam.getText().length() > 15) {
             message.setX(Gdx.graphics.getWidth() / 2 - 360);
+            game.actionResolver.showToast("Sorry! Your name is too long...");
             message.setText("Sorry! Your name is too long...");
         } else {
             message.setX(Gdx.graphics.getWidth() / 2 - 290);
-            message.setText("Please enter your name!");
+            game.actionResolver.showToast("Please enter your name");
+         //   message.setText("Please enter your name!");
         }
     }
 
